@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Loja.API.Data;
 using Loja.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,41 +13,25 @@ namespace Loja.API.Controllers
     [Route("api/[controller]")]
     public class ClienteController : ControllerBase
     {
-       public IEnumerable<Cliente> _cliente = new Cliente[]{
-         new Cliente(){
-                ClienteId=1,
-                Nome="Felipe",
-                Sobrenome="Brag",
-                CPF="123.456.123-23",
-                Email="felipebrag@gmail.com",
-                Senha="felipe13",
-                ConfSenha="felipe13",
-                },
-                new Cliente(){
-                ClienteId=2,
-                Nome="Felipe",
-                Sobrenome="Brag",
-                CPF="123.456.123-23",
-                Email="felipebrag@gmail.com",
-                Senha="felipe13",
-                ConfSenha="felipe13",
-                }
-       };
+       
+        private readonly DataContext _context;
 
-       public ClienteController(){
+       public ClienteController(DataContext context){
+            this._context = context;
 
        }
 
         [HttpGet]
         public IEnumerable<Cliente> Get()
         {
-            return _cliente;
+            return _context.Clientes;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Cliente> GetById(int id)
+        public Cliente GetById(int id)
         {
-            return _cliente.Where(cliente => cliente.ClienteId == id);
+            return  _context.Clientes.FirstOrDefault(
+                cliente => cliente.ClienteId == id);
         }
 
         [HttpPost]
