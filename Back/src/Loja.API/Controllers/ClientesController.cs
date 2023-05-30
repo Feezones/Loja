@@ -11,12 +11,12 @@ namespace Loja.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ClienteController : ControllerBase
+    public class ClientesController : ControllerBase
     {
        
         private readonly DataContext _context;
 
-       public ClienteController(DataContext context){
+       public ClientesController(DataContext context){
             this._context = context;
 
        }
