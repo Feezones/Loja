@@ -2,14 +2,16 @@
 using Loja.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Loja.API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230531225411_correcoes")]
+    partial class correcoes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,29 +50,6 @@ namespace Loja.API.Data.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Clientes");
-                });
-
-            modelBuilder.Entity("Loja.API.Models.Item", b =>
-                {
-                    b.Property<int>("ItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Img")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ItemId");
-
-                    b.ToTable("Itens");
                 });
 #pragma warning restore 612, 618
         }

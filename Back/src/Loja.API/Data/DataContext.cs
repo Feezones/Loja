@@ -14,5 +14,6 @@ namespace Loja.API.Data
             
         }
         public DbSet<Cliente> Clientes{get;set;}
+        public DbSet<Item> Itens{get;set;}
     }
 }
