@@ -4,3 +4,14 @@
 
 - dotnet ef database update
 //cria/atualiza o arquivo de banco de dados
+
+
+---diretivas estruturais
+*ngIf
+*ngFor
+*ngShow
+
+
+
+
+------VOLTAR A SEÇÃO 5> PROPRIEDADE BNDING PARA VER TRATAMENTO DE IMAGEM

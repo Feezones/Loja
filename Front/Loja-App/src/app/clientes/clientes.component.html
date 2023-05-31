@@ -1,10 +1,53 @@
 
+<h3>Clientes Registrados</h3>
+<hr>
 
 
-<div *ngFor="let cliente of clientes">
-  <p><b>Nome:</b>{{cliente.nome}}</p>
-  <p><b>Sobrenome:</b>{{cliente.sobrenome}}</p>
-  <hr>
+
+<div action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filtroLista">
+  </div>
 </div>
+
+
+
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>nome:</th>
+      <th>sobrenome</th>
+      <th>cpf</th>
+      <th>email</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="clientes && clientes.length">
+    <tr *ngFor="let cliente of clientesFiltrados">
+      <td>{{cliente.clienteId}}</td>
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.sobrenome}}</td>
+      <td>{{cliente.cpf}}</td>
+      <td>{{cliente.email}}</td>
+      <td>
+        <button type="button" class="btn btn-outline-info mr-2">Alterar</button>
+        <button type="button" class="btn btn-outline-danger">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!clientes.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum cliente encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+
 
 
