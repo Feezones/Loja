@@ -1,0 +1,57 @@
+
+<h3>Itens Registrados</h3>
+<hr>
+
+
+
+<div action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="buscar" [(ngModel)]="filtroLista">
+  </div>
+</div>
+
+
+
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>nome</th>
+      <th>Descricao</th>
+      <th>Imagem</th>
+      <th>Preço</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="itens && itens.length">
+    <tr *ngFor="let item of itensFiltrados">
+      <td>{{item.itemId}}</td>
+      <td>{{item.nome}}</td>
+      <td>{{item.descricao}}</td>
+      <td>
+        <img src="/assets/{{item.img}}" alt=""
+        [style.width.px]="widthImg"
+        [style.margin.px]="marginImg">
+      </td>
+      <td>{{item.preco}}</td>
+      <td>
+        <button type="button" class="btn btn-outline-info mr-2">Alterar</button>
+        <button type="button" class="btn btn-outline-danger">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!itens.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum item encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+
+
+

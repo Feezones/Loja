@@ -10,15 +10,17 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NavComponent } from './nav/nav.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ItensComponent } from './itens/itens.component';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ClientesComponent,
-    NavComponent
+    NavComponent,
+      ItensComponent
    ],
   imports: [
     BrowserModule,
