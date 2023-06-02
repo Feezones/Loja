@@ -2,15 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Loja.API.Models;
+using Loja.Domain;
 
-namespace Loja.API.Models
+namespace Loja.Domain
 {
 
     public class Pedidos
     {
-        public Cliente Cliente { get; set; }
-        public List<Item> Itens { get; set; }
+        public int PedidoId { get; set; }
+        public Cliente ClienteId { get; set; }
+        public Cliente ClienteNome { get; set; }
+        public IEnumerable<Item> ItensId { get; set; }
+        public IEnumerable<Item> Itens { get; set; }
+        public Cliente endereco{get;set;}
         public DateTime DataHora { get; set; }
 
         public void Pedido()
@@ -21,12 +25,12 @@ namespace Loja.API.Models
 
         public void AdicionarItem(Item item)
         {
-            Itens.Add(item);
+            //Itens.Add(item);
         }
 
         public void RemoverItem(Item item)
         {
-            Itens.Remove(item);
+            //Itens.Remove(item);
         }
 
         public decimal CalcularValorTotal()

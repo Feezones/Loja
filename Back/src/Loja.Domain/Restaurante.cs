@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Loja.API.Models
+namespace Loja.Domain
 {
     public class Restaurante
     {
-        public List<Pedidos> PedidosRecebidos { get; set; }
+        public IEnumerable<Pedidos> PedidosRecebidos { get; set; }
 
         public Restaurante()
         {
@@ -16,7 +16,7 @@ namespace Loja.API.Models
 
         public void AdicionarPedido(Pedidos pedido)
         {
-            PedidosRecebidos.Add(pedido);
+            //PedidosRecebidos.Add(pedido);
         }
 
         public void ConfirmarPedido(Pedidos pedido)
