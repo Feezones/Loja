@@ -12,6 +12,30 @@
 *ngShow
 
 
+--- dotnet new sln -n "nome"
+    cria uma solution para rodar o projeto direto da raiz/ da pasta src ao invez da loja.api
+
+---dotnet new classlib -n "nome".Persistence
+
+---dotnet new classlib -n Loja.Domain
+
+---dotnet new classlib -n Loja.Application
+
+---------
+
+---dotnet sln Loja.sln add Loja.Application
+                            .Domain
+                            .Persistence
+
+    adiciona a referencia ao sln
+
+----------
+
+---dotnet add .\Loja.API.csproj reference .\Loja.Application\
+    cria referencia do Application dentro do Loja.api.csproj
+
+
+
 
 
 ------VOLTAR A SEÇÃO 5> PROPRIEDADE BNDING PARA VER TRATAMENTO DE IMAGEM
