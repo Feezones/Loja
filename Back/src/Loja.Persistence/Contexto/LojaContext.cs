@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Loja.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Loja.Persistence
+namespace Loja.Persistence.Contexto
 {
     public class LojaContext : DbContext
     {
@@ -15,6 +15,7 @@ namespace Loja.Persistence
         }
         public DbSet<Cliente> Clientes{get;set;}
         public DbSet<Item> Itens{get;set;}
+        public DbSet<Pedidos> Pedidos {get;set;} 
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

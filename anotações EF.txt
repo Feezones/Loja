@@ -35,6 +35,10 @@
     cria referencia do Application dentro do Loja.api.csproj
 
 
+---dotnet ef migrations add Initial -p .\Loja.Persistence\ -s .\Loja.API\ 
+    persistence pq é onde esta o context, e o api n sei pq exatamente
+
+
 
 
 

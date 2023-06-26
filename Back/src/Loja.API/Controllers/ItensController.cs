@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Loja.API.Data;
-using Loja.API.Models;
+using Loja.Domain;
+using Loja.Persistence;
+using Loja.Persistence.Contexto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,9 +14,9 @@ namespace Loja.API.Controllers
     [Route("api/[controller]")]
     public class ItensController : Controller
     {
-        private readonly DataContext _context;
+        private readonly LojaContext _context;
 
-        public ItensController(DataContext context)
+        public ItensController(LojaContext context)
         {
             this._context = context;
         }
@@ -30,7 +31,7 @@ namespace Loja.API.Controllers
         public Item GetById(int id)
         {
             return  _context.Itens.FirstOrDefault(
-                item => item.ItemId == id);
+                item => item.Id == id);
         }
 
         [HttpPost]

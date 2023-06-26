@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Loja.API.Data;
+using Loja.Domain;
+using Loja.Persistence;
+using Loja.Persistence.Contexto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Loja.Application.Contrato;
 
 namespace Loja.API.Controllers
 {
@@ -13,24 +16,27 @@ namespace Loja.API.Controllers
     public class ClientesController : ControllerBase
     {
        
-        private readonly DataContext _context;
-
-       public ClientesController(DataContext context){
-            this._context = context;
-
-       }
+        public ClientesController(IClienteService clienteService)
+        {
+            _clienteService = clienteService;
+        }
 
         [HttpGet]
-        public IEnumerable<Cliente> Get()
+        public async Task<IActionResult> Get()
         {
-            return _context.Clientes;
+            try{
+                var clientes = await _clienteService.GetAllClientesAsync(true);
+                if(clientes == null) return NotFound("Nenhum cliente encontrado");
+            }catch(System.Exception){
+                throw;
+            }
         }
 
         [HttpGet("{id}")]
         public Cliente GetById(int id)
         {
             return  _context.Clientes.FirstOrDefault(
-                cliente => cliente.ClienteId == id);
+                cliente => cliente.Id == id);
         }
 
         [HttpPost]
